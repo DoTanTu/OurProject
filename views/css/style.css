@@ -283,3 +283,8 @@ button {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+
+.status{
+  width: 200px;
+}

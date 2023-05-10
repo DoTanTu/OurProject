@@ -18,12 +18,13 @@
     <div class="container-1">
         <div class="sidebar">
             <div class="logo-edit">
-                <img src="images/logo.jpg" >
+                <img src="images/logo.jpg">
                 <p>BỆNH VIỆN HẢI CHÂU</p>
             </div>
             <ul class="list-unstyled">
                 <div class="section">NAVIGATION</div>
-                <li><a href="index.html" style="color: rgb(30, 233, 16);"><i class='bx bx-list-ul' ></i>Danh sách yêu cầu</a></li>
+                <li><a href="index.html" style="color: rgb(30, 233, 16);"><i class='bx bx-list-ul'></i>Danh sách yêu
+                        cầu</a></li>
                 <li><a href="index-2.html"><i class="ri-file-list-line"></i>Quản lý thiết bị</a></li>
                 <li><a href="#"><i class='bx bxs-add-to-queue'></i>Xử lý nhập</a></li>
                 <li><a href="#"><i class="ri-file-reduce-fill"></i>Xử lý xuất</a></li>
@@ -53,6 +54,48 @@
                 </div>
             </div>
             <div class="product-list">
+                <div class="filter border  p-3 w-100" style="display: none; padding: 10px;">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputNhaCungCap">Nhà Cung Cấp:</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <select class="custom-select" id="inputNhaCungCap">
+                                                <option value="">--Nhà Cung Cấp--</option>
+                                                <!-- Thêm các option khác tại đây -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputTrangThai">Trạng Thái:</label>
+                                    <div class="col-md-3">
+                                        <select class=" form-control-lg">
+                                            <option value="">--Trạng Thái--</option>
+                                            <option value="">Bình thường</option>"
+                                            <!-- Thêm các option khác tại đây -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputSoLuong">Số Lượng:</label>
+                                    <div class="col-md-6">
+                                    <input type="number" class="form-control" id="inputSoLuong" placeholder="Nhập số lượng">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Thêm các trường nhập liệu khác tại đây -->
+                            <button type="button" class="btn btn-primary" onclick="searchData()">Tìm kiếm</button>
+                        </div>
+                    </form>
+                    
+                </div>
                 <div class="border p-3 w-100">
                     <form>
                         <div class="form-group row ">
@@ -114,95 +157,78 @@
                     </form>
                 </div>
                 <div class="table-responsive w-100">
-                    <table class="table table-bordered table-hover">
+                    <table id="tableThietBi" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Số TT</th>
                                 <th>Mã thiết bị</th>
+                                <th>Tên cung cấp</th>
                                 <th>Tên thiết bị</th>
-                                <th>Loại</th>
+                                <th>Nhà Sản Xuất</th>
+                                <th>Loại thiết bị</th>
+                                <th>Hạn sử dụng</th>
+                                <th>Trạng thái</th>
                                 <th>Số lượng</th>
                                 <th>Đơn vị</th>
-                                <th>Nhà sản xuất</th>
-                                <th>Trạng thái</th>
-                                <th>Hạn sử dụng</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>MB001</td>
-                                <td>Máy tính xách tay</td>
-                                <td>Laptop</td>
-                                <td>10</td>
-                                <td>Cái</td>
-                                <td>Apple</td>
-                                <td>Sử dụng tốt</td>
-                                <td>10/2024</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>MB002</td>
-                                <td>Máy in đa năng</td>
-                                <td>Máy in</td>
-                                <td>5</td>
-                                <td>Cái</td>
-                                <td>Canon</td>
-                                <td>Đang sửa chữa</td>
-                                <td>07/2023</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>MB003</td>
-                                <td>Máy chiếu</td>
-                                <td>Máy chiếu</td>
-                                <td>2</td>
-                                <td>Cái</td>
-                                <td>Epson</td>
-                                <td>Đang sử dụng</td>
-                                <td>12/2025</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>MB003</td>
-                                <td>Máy chiếu</td>
-                                <td>Máy chiếu</td>
-                                <td>2</td>
-                                <td>Cái</td>
-                                <td>Epson</td>
-                                <td>Đang sử dụng</td>
-                                <td>12/2025</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>MB003</td>
-                                <td>Máy chiếu</td>
-                                <td>Máy chiếu</td>
-                                <td>2</td>
-                                <td>Cái</td>
-                                <td>Epson</td>
-                                <td>Đang sử dụng</td>
-                                <td>12/2025</td>
-                            </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="product-item">
-                    <img src="images/product.jpg" alt="images/product 1">
-                    <h2>images/product 1</h2>
-                    <p>Description of images/product 1</p>
-                    <p>$99.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="images/product.jpg" alt="images/product 2">
-                    <h2>images/product 2</h2>
-                    <p>Description of images/product 2</p>
-                    <p>$49.99</p>
                 </div>
             </div>
         </div>
     </div>
+    <script src="js/thietBi.js"></script>
+    <script>
+        var filterDiv = document.querySelector('.filter');
+        var filterButton = document.getElementById('filter-header');
+
+        filterButton.addEventListener('click', function () {
+            if (filterDiv.style.display === 'none') {
+                filterDiv.style.display = 'block';
+            } else {
+                filterDiv.style.display = 'none';
+                // Gọi hàm getAll ở đây
+                getAllData();
+            }
+        });
+
+        // Kiểm tra khi transition hoàn thành
+        filterDiv.addEventListener('transitionend', function () {
+            if (filterDiv.style.display === 'none') {
+                // Gọi hàm getAll ở đây
+                getAllData();
+            }
+        });
+
+        function getAllData() {
+            // Gọi hàm getAll ở đây
+            fetch('http://localhost:3000/thietBi/list')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#tableThietBi tbody');
+                    tableBody.innerHTML = ''; // Xóa bỏ các dòng hiện tại trong bảng
+                    data.result.forEach(thietBi => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                    <td>${thietBi.maThietBi}</td>
+                    <td>${thietBi.tenNCC}</td>
+                    <td>${thietBi.tenThietBi}</td>
+                    <td>${thietBi.tenNSX}</td>
+                    <td>${thietBi.loaiThietBi}</td>
+                    <td>${thietBi.hanSD}</td>
+                    <td>${thietBi.trangThai}</td>
+                    <td>${thietBi.soLuong}</td>
+                    <td>${thietBi.donVi}</td>
+                `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
 
 </body>
 
