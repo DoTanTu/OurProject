@@ -3,7 +3,13 @@ body {
   padding: 0;
 }
 
+.form-group.invalid .form-control {
+  border-color: #f33a58;
+}
 
+.form-group.invalid .form-message {
+  color: #f33a58;
+}
 /* ------------------------------------------------------------ SLIDE-BAR ---------------------------------------------------------*/
 
 .logo-edit {
@@ -287,4 +293,26 @@ button {
 
 .status{
   width: 200px;
+}
+
+.ngay-ket-thuc{
+  margin-top: 10px;
+}
+
+/*-----------------------------------------------------Button-------------*/
+.product-item h3 {
+  font-weight: bolder;
+  margin-bottom: 20px;
+  text-align: left;
+  text-transform: uppercase;
+} 
+
+.action-img {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.bg-success{
+  color: #ffffff;
 }

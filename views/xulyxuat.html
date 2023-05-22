@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trang web của tôi</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <div class="container-1">
+        <div class="sidebar">
+            <div class="logo-edit">
+                <img src="images/logo.jpg" >
+                <p>BỆNH VIỆN HẢI CHÂU</p>
+            </div>
+            <ul class="list-unstyled">
+                <div class="section">NAVIGATION</div>
+                <li><a href="index.html"><i class='bx bx-list-ul' ></i>Danh sách yêu cầu</a></li>
+                <li><a href="index-2.html"><i class="ri-file-list-line"></i>Quản lý thiết bị</a></li>
+                <li><a href="#"><i class='bx bxs-add-to-queue'></i>Xử lý nhập</a></li>
+                <li><a href="xulyxuat.html" style="color: rgb(30, 233, 16);"><i class="ri-file-reduce-fill"></i>Xử lý xuất</a></li>
+                <li><a href="#"><i class="ri-bar-chart-box-fill"></i>Thống kê</a></li>
+                <li><a href="#"><i class='bx bx-cog'></i>Cài đặt</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="search-header">
+                    <div class="input-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="filter-header"><i class='bx bx-filter-alt'></i>Lọc</button>
+                </div>
+                <div class="main">
+                    <a href="#" class="notification"><i class='bx bxs-bell-ring'></i></a>
+                    <div class="account-user">
+                        <img src="images/person.png" alt="" class="">
+                        <a href="#"></i>Tài khoản</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-list">
+                <label style="padding-left: 20px; font-size: 20px; font-weight: 600;">Thêm phiếu xuất:</label>
+                <div class="border p-3 w-100">
+                    <form id="phieuXuatForm">
+                        <div class="form-group row">
+                            <div class="col-sm-4" style="padding-left: 35px;">
+                                <label>Mã xuất kho:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Ngày xuất kho:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Khoa sử dụng:</label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4" style="padding-left: 35px;">
+                                <input id="maphieuxuat" type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-sm-4">
+                                <input id="ngayXuatKho" type="text" class="form-control" disabled>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="khoa_option">
+                                    <option value="">--Chọn khoa--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div>
+                                <label class="col-sm-2 col-form-label" style="padding-left: 25px; width: 200px;">Nhân viên xuất kho:</label>
+                            </div>
+                            <div class="col-sm-4" style="padding-left: 35px;">
+                                <select id="nvxuat_option" class="form-control">
+                                    <option value="">--Chọn nhân viên--</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4" style="margin-top: -42.5px;">
+                                <label class="col-sm-2 col-form-label" style="width: 200px;">Mục đích sử dụng:</label>
+                                <textarea class="form-control form-control-lg" style="height: 130px; width: 752px;" rows="5" cols="50"></textarea>
+                            </div>
+                            <div style=" margin-top: -80px;">
+                                <label class="col-sm-2 col-form-label" style="width: 240px; padding-left: 25px;">Nhân viên nhận thiết bị:</label>
+                            </div>
+                            <div class="col-sm-4" style=" margin-top: -37.5px; padding-left: 35px;">
+                               <select id="nvnhan_option" class="form-control">
+                                  <option value="">--Chọn nhân viên--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="border p-3 w-100" id="themtb">
+                    <form>
+                        <div class="form-group row ">
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Mã thiết bị:</label>
+                            <div class="col-sm-4">
+                                <select id="maThietBi" class="form-control form-control-lg">
+                                    <option value="">--Chọn mã thiết bị--</option>
+                                </select>                                  
+                            </div>
+                            <label class="col-sm-2 col-form-label" style="padding-left: 45px;">Số lượng:</label>
+                            <div class="col-sm-4">
+                                <input id="soLuong" type="number" class="form-control form-control-lg">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Tên thiết bị:</label>
+                            <div class="col-sm-4">
+                                <input id="tenThietBi" type="text" class="form-control form-control-lg">
+                            </div>
+                            <label class="col-sm-2 col-form-label" style="padding-left: 45px;">Đơn vị:</label>
+                            <div class="col-sm-4">
+                                <select id="donVi" class="form-control form-control-lg">
+                                    <option value="Cái">Cái</option>
+                                    <option value="Bộ">Bộ</option>
+                                    <option value="Ống">Ống</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Loại thiết bị:</label>
+                            <div class="col-sm-4">
+                                <select id="loaiThietBi" class="form-control form-control-lg">
+                                    <option value="">--Chọn loại--</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 col-form-label" style="padding-left: 45px;">Trạng thái:</label>
+                            <div class="col-sm-4">
+                                <select id="trangThai" class="form-control form-control-lg">
+                                    <option value="" style="padding-left: 35px;">--Chọn trạng thái--</option>
+                                    <option value="Đang sử dụng">Đang sử dụng</option>
+                                    <option value="Hỏng">Hỏng</option>
+                                    <option value="Chưa sử dụng">Chưa sử dụng</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Ghi chú:</label>
+                                <div class="col-sm-4">
+                                    <input id="ghiChu" type="text" class="form-control form-control-lg">
+                                </div>
+                            <div style="align-items: right; text-align: right;">
+                                <button type="submit" class="btn btn-primary btn-lg mr-2" id="btn-add" style="margin-top: -30px;">Thêm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive w-100" style="overflow-x: hidden;">
+                    <table id="tblThietBi" class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="thietbi-xuat">
+                                <th>Số TT</th>
+                                <th>Mã thiết bị</th>
+                                <th>Tên thiết bị</th>
+                                <th>Loại thiết bị</th>
+                                <th>Số lượng</th>
+                                <th>Đơn vị</th>
+                                <th>Trạng thái</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="nut" class="form-group row">
+                        <div style="align-items: right; text-align: right;">
+                            <button type="submit" class="btn btn-primary btn-lg" id="btn-xacnhan" style="width: 120px;">Xác nhận</button>
+                            <button type="reset" class="btn btn-secondary btn-lg" id="btn-cancel">Hủy</button>
+                        </div>
+                    </div>
+                <hr>
+                </div>
+                <label style="padding-left: 20px; font-size: 20px; font-weight: 600;">Lịch sử xuất:</label>
+                <div class="table-responsive w-100">
+                    <table id="tbxuat" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Số TT</th>
+                                <th>Mã xuất kho</th>
+                                <th>Ngày xuất kho</th>
+                                <th>Nhân viên xuất kho</th>
+                                <th>Nhân viên nhận thiết bị</th>
+                                <th>Khoa sử dụng</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/xulyxuat.js"></script>
+</body>
+</html>

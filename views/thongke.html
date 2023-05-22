@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trang web của tôi</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+    <!-- pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.js"></script>
+
+        <!-- chart -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container-1">
+        <div class="sidebar">
+            <div class="logo-edit">
+                <img src="images/logo.jpg">
+                <p>BỆNH VIỆN HẢI CHÂU</p>
+            </div>
+            <ul class="list-unstyled">
+                <div class="section">NAVIGATION</div>
+                <li><a href="index.html"><i class='bx bx-list-ul'></i>Danh sách yêu cầu</a></li>
+                <li><a href="index.html"><i class="ri-file-list-line"></i>Quản lý thiết bị</a></li>
+                <li><a href="#"><i class='bx bxs-add-to-queue'></i>Xử lý nhập</a></li>
+                <li><a href="xulyxuat.html"><i class="ri-file-reduce-fill"></i>Xử lý xuất</a></li>
+                <li><a href="thongke.html" style="color: rgb(30, 233, 16);"><i class="ri-bar-chart-box-fill"></i>Thống
+                        kê</a></li>
+                <li><a href="#"><i class='bx bx-cog'></i>Cài đặt</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="search-header">
+                    <div class="input-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="filter-header"><i class='bx bx-filter-alt'></i>Lọc</button>
+                </div>
+                <div class="main">
+                    <a href="#" class="notification"><i class='bx bxs-bell-ring'></i></a>
+                    <div class="account-user">
+                        <img src="images/person.png" alt="" class="">
+                        <a href="#"></i>Tài khoản</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-list">
+                <div class="product-item">
+                    <h3>THỐNG KÊ SỐ LƯỢNG THIẾT BỊ HIỆN CÒN</h3>
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nhập Số lượng hiện còn
+                                tối đa:</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control " id="SLhiencon">
+                            </div>
+                            <button type="button" class="btn col-sm-2 btn-primary" id="thongke_SL"
+                                onclick="filterNumber()" style="width: 100%; margin-left: 30px;">Thống kê</button>
+                            <button type="button" class="btn col-sm-2 btn-primary" id="pdfthongke_SL"
+                                onclick="createpdf()"
+                                style="width: 100%; background-color: rgb(45, 170, 45); margin-left: 10px;">Xuất báo
+                                cáo</button>
+                        </div>
+
+
+                    </form>
+                    <table id="tableThietBi" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã thiết bị</th>
+                                <th>Tên thiết bị</th>
+                                <th>Nhà Sản Xuất</th>
+                                <th>Loại thiết bị</th>
+                                <th>Hạn sử dụng</th>
+                                <th>Trạng thái</th>
+                                <th>Số lượng</th>
+                                <th>Đơn vị</th>
+                                <th>Mã Nhà cung cấp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="product-item">
+                    <h3>Thống kê số lượng thiết bị xuất theo khoảng thời gian </h3>
+                    <form onsubmit="return submitForm()">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Từ ngày:</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="fromDate">
+                            </div>
+                            <label class="col-sm-2 col-form-label" style="padding-left: 35px;">Đến ngày:</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="toDate">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" onclick="thongKeXuat() ;viewChart()">Thống kê</button>
+                        <button type="button" class="btn btn-primary"  onclick ="createpdf_thongkexuat()" style="background-color: rgb(42, 177, 42);">Xuất
+                            báo cáo</button>
+                    </form>
+                    <div >
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <table id="tableThietBiXuat" class=" table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã Thiết Bị</th>
+                                <th>Tên Thiết Bị</th>
+                                <th>Trạng thái</th>
+                                <th>Số lượng xuất</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="product-item">
+                    <h3>Thống kê số lượng thiết bị nhập theo khoảng thời gian</h3>
+                    <form onsubmit="return submitForm()">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" style="padding: 0px 5px !important;">Từ ngày:</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="fromDate_N"
+                                    style="padding: 0px 5px !important;">
+                            </div>
+                            <label class="col-sm-2 col-form-label" style="padding: 0px 5px !important;;">Đến
+                                ngày:</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="toDate_N">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick ="thongKeNhap(); viewChart2()">Thống kê</button>
+                        <button type="button" class="btn btn-primary" onclick="createpdf_thongkenhap()" style="background-color: rgb(42, 177, 42);">Xuất
+                            báo cáo</button>
+                    </form>
+                    <div >
+                        <canvas id="myChart1"></canvas>
+                    </div>
+                    <table id="tableThietBiNhap" class=" table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã Thiết Bị</th>
+                                <th>Tên Thiết Bị</th>
+                                <th>Trạng thái</th>
+                                <th>Số lượng nhập</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/report.js"></script>
+    <script src="js/pdf.js"></script>
+    <script src="js/drawchart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    
+</body>
+
+</html>

@@ -1,11 +1,15 @@
+const { validateSchema, updateSchema,addSchema,deleteSchema } = require('./schemas.yup');
 
 module.exports = function(router){
-    var thietBiController = require('../controllers/thietBi.controller');
+    var ThietbiController = require('../controllers/Thietbi.controller');
 
-    router.get('/thietBi/list', thietBiController.get_list);
-    router.get('/thietBi/detail/:name', thietBiController.getByName);
-    router.get('/thietBi/filter/:maNCC', thietBiController.getByMaNCC);
-    router.get('/thietBi/trang-thai/:trangThai', thietBiController.getByStatus);
-    router.get('/thietBi/search-danhmuc-trangthai/:maNCC/:trangThai', thietBiController.getByStatusAndNCC);
+    router.get('/thietbi/list', ThietbiController.get_list);
+
+    router.post('/thietbi/add',validateSchema(addSchema) ,ThietbiController.add_product);
+
+    router.patch('/thietbi/update/:id',validateSchema(updateSchema), ThietbiController.update_product);
+    
+    router.delete('/thietbi/delete/:id', ThietbiController.delete_product);
+    
 
 }
