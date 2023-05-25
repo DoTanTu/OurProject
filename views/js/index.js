@@ -85,13 +85,13 @@ function resetInputupdate() {
 function checkTrangthai(data) {
     switch (data) {
         case 1:
-            return "Đang sử dụng"
+            return "Đang bảo trì"
             break;
         case 0:
-            return "Hỏng"
+            return "Bình thường"
             break;
         case -1:
-            return "Đang sửa chửa"
+            return "Hỏng"
             break;
         default:
     }

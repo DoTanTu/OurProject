@@ -49,34 +49,37 @@ function searchData() {
     const dateStart = document.getElementById('inputNgayBatDau').value;
     const dateEnd = document.getElementById('inputNgayKetThuc').value;
     if (maNCC !== '') {
-        if (soLuong1 !== '' && soLuong2 !== '') {
-          if (status !== '' && dateStart !== '' && dateEnd !== '') {
-            searchByNCC_TrangThai_soLuong_Date();
-          } else if (status !== '') {
-            searchByNCC_TrangThai_soLuong();
-          } else if (dateStart !== '' && dateEnd !== '') {
-            searchByNCCAndDate();
-          } else {
-            searchByNCCAndSoLuong();
-          }
-        } else if (status !== '' && dateStart === '' && dateEnd === '') {
-          searchByNCCAndTrangThai();
-        } else if (dateStart !== '' && dateEnd !== '') {
-          searchByDate();
-        } else {
-          searchByNhaCungCap();
-        }
-      } else if (soLuong1 !== '' && soLuong2 !== '') {
+      if (soLuong1 !== '' && soLuong2 !== '') {
         if (status !== '' && dateStart !== '' && dateEnd !== '') {
-          searchBySoLuong_TrangThai_thoiGian();
+          searchByNCC_TrangThai_soLuong_Date();
         } else if (status !== '') {
-          searchBySoLuongAndStatus();
+          searchByNCC_TrangThai_soLuong();
         } else if (dateStart !== '' && dateEnd !== '') {
-          searchBySoLuongAndDate();
+          searchByNCCAndDate();
         } else {
-          searchBySoLuong();
+          searchByNCCAndSoLuong();
         }
+      } else if (status !== '' && dateStart === '' && dateEnd === '') {
+        searchByNCCAndTrangThai();
+      } else if (dateStart !== '' && dateEnd !== '') {
+        searchByDate();
+      } else {
+        searchByNhaCungCap();
       }
+    } else if (soLuong1 !== '' && soLuong2 !== '') {
+      if (status !== '' && dateStart !== '' && dateEnd !== '') {
+        searchBySoLuong_TrangThai_thoiGian();
+      } else if (status !== '') {
+        searchBySoLuongAndStatus();
+      } else if (dateStart !== '' && dateEnd !== '') {
+        searchBySoLuongAndDate();
+      } else {
+        searchBySoLuong();
+      }
+    } else if (status !== '' && dateStart === '' && dateEnd === '') {
+      searchByTrangThai();
+    }
+    
   }
 
 //-------------------------------------------------THỰC HIỆN ĐƯA DỮ LIỆU TRẢ VỀ TỪ API VÀO TABLE-----------------------------------//
@@ -128,11 +131,11 @@ function showNoResults(tableBody) {
 // ----------------------------------------------------------TRẠNG THÁI--------------------------------------------------------------------//
 function getTrangThaiLabel(trangThai) {
     if (trangThai === 1) {
-      return 'Đang bảo trì';
-    } else if (trangThai === 0) {
       return 'Bình thường';
-    } else if (trangThai === -1) {
+    } else if (trangThai === 0) {
       return 'Hỏng';
+    } else if (trangThai === -1) {
+      return 'Đang bảo trì';
     } else {
       return '';
     }
